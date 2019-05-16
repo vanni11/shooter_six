@@ -25,12 +25,8 @@ public class PlayerController : MonoBehaviour {
 		Move(h, v);
 		Turning();
 	}
-
-	/// <summary>
-	/// 플레이어를 움직인다.
-	/// </summary>
-	/// <param 수평방향 입력="h"></param>
-	/// <param 수직방향 입력="v"></param>
+	
+	//플레이어를 움직인다.
 	private void Move(float h, float v)
 	{
 		movement.Set(h, 0f, v);
@@ -38,9 +34,7 @@ public class PlayerController : MonoBehaviour {
 		playerRigidbody.MovePosition(transform.position + movement);
 	}
 	
-	/// <summary>
-	/// 마우스 포인터를 입력으로 받아 Ray를 쏴서 그 방향으로 플레이어를 회전시킨다.
-	/// </summary>
+	//마우스 포인터를 입력으로 받아 Ray를 쏴서 그 방향으로 플레이어를 회전시킨다.
 	private void Turning()
 	{
 		Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -54,7 +48,7 @@ public class PlayerController : MonoBehaviour {
 			Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
 			playerRigidbody.MoveRotation(newRotation);
 
-			Debug.DrawLine(Camera.main.transform.position, floorHit.point, Color.yellow); //쏘는 Ray 확인용
+			Debug.DrawLine(Camera.main.transform.position, floorHit.point, Color.yellow); //쏘는 Ray를 Scene뷰에서 확인용
 		}
 	}
 }
