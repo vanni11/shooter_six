@@ -11,13 +11,13 @@ public class PlayerController : MonoBehaviour {
 	int floorMask;
 	float camRayLength = 100f;
 
-	void Awake()
+	private void Awake()
 	{
 		floorMask = LayerMask.GetMask("Floor");
 		playerRigidbody = GetComponent<Rigidbody>();
 	}
 
-	void FixedUpdate()
+	private void FixedUpdate()
 	{
 		float h = Input.GetAxisRaw("Horizontal");
 		float v = Input.GetAxisRaw("Vertical");
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 	/// </summary>
 	/// <param 수평방향 입력="h"></param>
 	/// <param 수직방향 입력="v"></param>
-	void Move(float h, float v)
+	private void Move(float h, float v)
 	{
 		movement.Set(h, 0f, v);
 		movement = movement.normalized * speed * Time.deltaTime;
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
 	/// <summary>
 	/// 마우스 포인터를 입력으로 받아 Ray를 쏴서 그 방향으로 플레이어를 회전시킨다.
 	/// </summary>
-	void Turning()
+	private void Turning()
 	{
 		Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit floorHit;
