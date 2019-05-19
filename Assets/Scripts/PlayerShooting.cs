@@ -50,14 +50,17 @@ public class PlayerShooting : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
+			gunLine.enabled = false; //LineRenderer 끔 (연사 레이져 남아있는거 없애기용)
 			nowShootType = shootType.single_shot;
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
+			gunLine.enabled = false; //LineRenderer 끔 (연사 레이져 남아있는거 없애기용)
 			nowShootType = shootType.repeater_shot;
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
+			gunLine.enabled = false; //LineRenderer 끔 (연사 레이져 남아있는거 없애기용)
 			nowShootType = shootType.single_lazer;
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha4))
