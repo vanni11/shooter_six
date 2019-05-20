@@ -4,30 +4,38 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float speed = 6f;
+    public float speed = 6.0f;
 
-	Vector3 movement;
-	Rigidbody playerRigidbody;
-	int floorMask;
-	float camRayLength = 100f;
+    Vector3 movement;
+    Rigidbody playerRigidbody;
+    int floorMask;
+    float camRayLength = 100.0f;
+    Animator anim;
 
-	private void Awake()
-	{
-		floorMask = LayerMask.GetMask("Floor");
-		playerRigidbody = GetComponent<Rigidbody>();
-	}
+    // Start()와 유사하지만 스크립트 활성에 상관없이 호출되기 때문에 참조 설정에 유리하다
+    private void Awake()
+    {
+        floorMask = LayerMask.GetMask("Floor");
+        playerRigidbody = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+    }
 
-	private void FixedUpdate()
-	{
-		float h = Input.GetAxisRaw("Horizontal");
-		float v = Input.GetAxisRaw("Vertical");
+    // 모든 Physics Update를 유발한다.
+    // Update는 렌더링과 함께 실행되지만 FixedUpdate는 물리효과와 함께 실행된다.
+    // 물리효과 캐릭터를 이동시키고 있으므로 Update가 아닌 FixedUpdate를 이용한다.
+    private void FixedUpdate()
+    {
+        // 원래 입력은 -1 ~ 1 사이의 값을 가지지만 다음의 코드를 쓰면 -1, 0, 1 세가지 값 외에는 가지지 않는다.
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
-		Move(h, v);
-		Turning();
-	}
-	
-	//플레이어를 움직인다.
-	private void Move(float h, float v)
+        Move(h, v);
+        Turning();
+        Animating(h, v);
+    }
+
+    //플레이어를 움직인다.
+    private void Move(float h, float v)
 	{
 		movement.Set(h, 0f, v);
 		movement = movement.normalized * speed * Time.deltaTime;
@@ -51,4 +59,11 @@ public class PlayerController : MonoBehaviour {
 			Debug.DrawLine(Camera.main.transform.position, floorHit.point, Color.yellow); //쏘는 Ray를 Scene뷰에서 확인용
 		}
 	}
+
+    void Animating(float h, float v)
+    {
+        bool walking = h != 0.0f || v != 0.0f;
+
+        anim.SetBool("IsWalking", walking);
+    }
 }
