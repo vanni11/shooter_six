@@ -14,11 +14,15 @@ public class EnemyAttack : MonoBehaviour
     bool playerInRange;
     float timer;
 
+    EnemyHealth enemyHealth;
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>(); // playerHealth의 TakeDamage를 호출하기 위함
         anim = GetComponent<Animator>();
+
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -49,7 +53,7 @@ public class EnemyAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && playerInRange)
+        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
         {
             Attack();
         }
