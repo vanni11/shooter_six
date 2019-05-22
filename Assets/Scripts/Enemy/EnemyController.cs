@@ -10,11 +10,12 @@ public class EnemyController : MonoBehaviour {
 	private void Awake()
 	{
 		nav = GetComponent<NavMeshAgent>();
-		player = GameObject.Find("Player");
+		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	private void Update()
 	{
-		nav.SetDestination(player.transform.position);
+		if(nav.isActiveAndEnabled)
+			nav.SetDestination(player.transform.position);
 	}
 }

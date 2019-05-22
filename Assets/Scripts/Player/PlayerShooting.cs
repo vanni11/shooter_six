@@ -84,7 +84,7 @@ public class PlayerShooting : MonoBehaviour {
 	public GameObject bullet; //총알
 	public float bulletSpeed; //총알속도 //30
 	float repeat_timer = 0f; //연발간격 시간 초기화용 timer
-	public float repeat_speed; //연발속도 //
+	public float repeat_speed; //연발속도 //5
 
 	enum shootType
 	{
@@ -106,9 +106,7 @@ public class PlayerShooting : MonoBehaviour {
 	private void Awake()
 	{
 		gunLine = GetComponentInChildren<LineRenderer>(); //총구에 붙어있는 LineRenderer가져옴
-
-		// gunLine.startWidth = 0.05f; //LineRenderer 굵기 설정   -------------- 참조 오류뜸 이유는 아직 모르겠음.
-
+		gunLine.startWidth = 0.05f; //LineRenderer 굵기 설정
 		shootableMask = LayerMask.GetMask("Shootable"); //Inspector에서 Layer를 Shootable로 설정한것들(방해물) 확인 
 	}
 

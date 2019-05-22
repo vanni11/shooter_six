@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-
     public float timeBetweenAttacks = 0.5f;
     public int attackDamage = 10;
 
@@ -16,7 +15,7 @@ public class EnemyAttack : MonoBehaviour
 
     EnemyHealth enemyHealth;
 
-    void Awake()
+    private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>(); // playerHealth의 TakeDamage를 호출하기 위함
@@ -25,7 +24,7 @@ public class EnemyAttack : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         // 사거리에 들어온것이 플레이어인지 확인
         if(other.gameObject == player)
@@ -34,7 +33,7 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if(other.gameObject == player)
         {
@@ -42,14 +41,7 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         timer += Time.deltaTime;
 

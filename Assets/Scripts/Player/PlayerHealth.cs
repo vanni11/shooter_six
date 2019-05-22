@@ -21,13 +21,7 @@ public class PlayerHealth : MonoBehaviour
     bool isDead; // 죽었나 확인
     bool damaged; // 데미지를 입었나 확인
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    void Awake()
+    private void Awake()
     {
         anim = GetComponent<Animator>();
         // playerAudio = GetComponent<AudioSource>();
@@ -36,8 +30,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = startingHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(damaged)
         {

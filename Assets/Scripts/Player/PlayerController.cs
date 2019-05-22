@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     //플레이어를 움직인다.
-    private void Move(float h, float v)
+    void Move(float h, float v)
 	{
 		movement.Set(h, 0f, v);
 		movement = movement.normalized * speed * Time.deltaTime;
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	//마우스 포인터를 입력으로 받아 Ray를 쏴서 그 방향으로 플레이어를 회전시킨다.
-	private void Turning()
+	void Turning()
 	{
 		Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit floorHit;

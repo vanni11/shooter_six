@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour
     bool isDead;
     bool isSinking;
 
-    void Awake()
+    private void Awake()
     {
         anim = GetComponent<Animator>();
         enemyAudio = GetComponent<AudioSource>();
@@ -28,14 +28,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = startingHealth;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(isSinking)
         {
@@ -80,7 +73,6 @@ public class EnemyHealth : MonoBehaviour
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true; // 유니티가 다시 계산하지 않는다.
         isSinking = true;
-
         Destroy(gameObject, 2.0f);
     }
 }
