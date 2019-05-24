@@ -19,7 +19,7 @@ public class EnemyAttack : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>(); // playerHealth의 TakeDamage를 호출하기 위함
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>(); //캡슐로 해서 우선 주석
 
         enemyHealth = GetComponent<EnemyHealth>();
     }
@@ -52,9 +52,9 @@ public class EnemyAttack : MonoBehaviour
 
         if(playerHealth.currentHealth <= 0)
         {
-            anim.SetTrigger("PlayerDead");
-        }
-    }
+			//anim.SetTrigger("PlayerDead"); //캡슐로 해서 우선 주석
+		}
+	}
 
     void Attack()
     {

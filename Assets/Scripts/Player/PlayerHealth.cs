@@ -35,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
         if(damaged)
         {
             damageImage.color = flashColor;
+			print("damaged");
         }
         else
         {
