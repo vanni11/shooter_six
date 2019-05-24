@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-
     public int startingHealth = 100; // 처음 체력
     public int currentHealth; // 현재 체력
     public Slider healthSlider; // 체력 바

@@ -4,118 +4,123 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour {
 
-    public Transform shootPoint; //총구위치
+    Transform shootPoint; //총구위치
+	
+	Ray shootRay;
+	RaycastHit shootHit;
+	public LineRenderer gunLine;
+	int shootableMask;
 
-    private void Single_Shot_Fire()
-    {
-        GameObject bulletClone = Instantiate(bullet, shootPoint.position, Quaternion.identity);
-        bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-    }
+	enum shootType
+	{
+		single_bullet, //단발
+		repeater_bullet, //연발
+		single_laser, //단발 레이저
+		repeater_laser //연발 레이저
+	}
+	shootType nowShootType = shootType.single_bullet;
+	shootType saveBulletMode = shootType.single_bullet;
+	shootType saveLaserMode = shootType.single_laser;
 
-
-    private void Repeater_Shot_Fire()
-    {
-        repeat_timer += Time.deltaTime;
-        if (repeat_timer > 1 / repeat_speed)
-        {
-            GameObject bulletClone = Instantiate(bullet, shootPoint.position, Quaternion.identity);
-            bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-            repeat_timer = 0f;
-        }
-    }
-
+	private void Awake()
+	{
+		shootPoint = GameObject.Find("ShootPoint").transform;
+		//gunLine = GetComponentInChildren<LineRenderer>(); //총구에 붙어있는 LineRenderer가져옴 //active상태가 아니라서 가져오지 못함 - public으로 직접참조하게 바꿈
+		gunLine.startWidth = 0.05f; //LineRenderer 굵기 설정
+		shootableMask = LayerMask.GetMask("Shootable"); //Inspector에서 Layer를 Shootable로 설정한것들(방해물) 확인
+	}
+	
     private void Update()
     {
-        if (nowShootType == shootType.single_shot)
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			nowShootType = saveBulletMode;
+			shootPoint = GameObject.Find("ShootPoint").transform;
+			RemoveLaser();
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			nowShootType = saveLaserMode;
+			shootPoint = GameObject.Find("ShootPoint").transform;
+			RemoveLaser();
+		}
+		else if (Input.GetKeyDown(KeyCode.B))
+		{
+			if(nowShootType == shootType.single_bullet || nowShootType == shootType.repeater_bullet)
+			{
+				nowShootType = nowShootType == shootType.single_bullet ? shootType.repeater_bullet : shootType.single_bullet;
+				saveBulletMode = nowShootType;
+			}
+			else if (nowShootType == shootType.single_laser || nowShootType == shootType.repeater_laser)
+			{
+				nowShootType = nowShootType == shootType.single_laser ? shootType.repeater_laser : shootType.single_laser;
+				saveLaserMode = nowShootType;
+			}
+			RemoveLaser();
+		}
+
+		if (nowShootType == shootType.single_bullet)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Single_Shot_Fire();
+                Single_Bullet_Fire();
             }
         }
-        if (nowShootType == shootType.repeater_shot)
+        else if (nowShootType == shootType.repeater_bullet)
         {
             if (Input.GetMouseButton(0))
             {
-                Repeater_Shot_Fire();
+                Repeater_Bullet_Fire();
             }
         }
-        if (nowShootType == shootType.single_lazer)
+        else if (nowShootType == shootType.single_laser)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Single_Shot_Lazer();
+                Single_Laser_Fire();
             }
         }
-        if (nowShootType == shootType.repeater_lazer)
+        else if (nowShootType == shootType.repeater_laser)
         {
             if (Input.GetMouseButton(0))
             {
-                Repeat_Shot_Lazer();
+                Repeat_Laser_Fire();
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                Stop_Repeat_Shot_Lazer();
+				RemoveLaser();
             }
         }
+	}
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            gunLine.enabled = false; //LineRenderer 끔 (연사 레이져 남아있는거 없애기용)
-            nowShootType = shootType.single_shot;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            gunLine.enabled = false; //LineRenderer 끔 (연사 레이져 남아있는거 없애기용)
-            nowShootType = shootType.repeater_shot;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            gunLine.enabled = false; //LineRenderer 끔 (연사 레이져 남아있는거 없애기용)
-            nowShootType = shootType.single_lazer;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            nowShootType = shootType.repeater_lazer;
-        }
-    }
-
-	#region *bullet shooting*
 	public GameObject bullet; //총알
 	public float bulletSpeed; //총알속도 //30
 	float repeat_timer = 0f; //연발간격 시간 초기화용 timer
 	public float repeat_speed; //연발속도 //5
 
-	enum shootType
+	private void Single_Bullet_Fire()
 	{
-		single_shot, //단발
-		repeater_shot, //연발
-		single_lazer, //단발 레이저
-		repeater_lazer //연발 레이저
-	}
-	shootType nowShootType = shootType.single_shot;
-
-	#endregion
-
-	#region *lazer*
-	Ray shootRay;
-	RaycastHit shootHit;
-	LineRenderer gunLine;
-	int shootableMask;
-
-	private void Awake()
-	{
-		gunLine = GetComponentInChildren<LineRenderer>(); //총구에 붙어있는 LineRenderer가져옴
-		gunLine.startWidth = 0.05f; //LineRenderer 굵기 설정
-		shootableMask = LayerMask.GetMask("Shootable"); //Inspector에서 Layer를 Shootable로 설정한것들(방해물) 확인 
+		GameObject bulletClone = Instantiate(bullet, shootPoint.position, Quaternion.identity);
+		bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
 	}
 
-	private void Single_Shot_Lazer()
+	private void Repeater_Bullet_Fire()
 	{
-		StartCoroutine(LazerOneShot());
+		repeat_timer += Time.deltaTime;
+		if (repeat_timer > 1 / repeat_speed)
+		{
+			GameObject bulletClone = Instantiate(bullet, shootPoint.position, Quaternion.identity);
+			bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+			repeat_timer = 0f;
+		}
+	}
+	
+	private void Single_Laser_Fire()
+	{
+		StartCoroutine(LaserOneShot());
 	}
 
-	IEnumerator LazerOneShot()
+	IEnumerator LaserOneShot()
 	{
 		gunLine.enabled = true; //라인그린다
 		gunLine.SetPosition(0, shootPoint.position); //라인의 시작을 총구로
@@ -133,7 +138,7 @@ public class PlayerShooting : MonoBehaviour {
 		gunLine.enabled = false; //LineRenderer 끔
 	}
 
-	private void Repeat_Shot_Lazer()
+	private void Repeat_Laser_Fire()
 	{
 		gunLine.enabled = true; //라인그린다
 		gunLine.SetPosition(0, shootPoint.position); //라인의 시작을 총구로
@@ -148,9 +153,9 @@ public class PlayerShooting : MonoBehaviour {
 			gunLine.SetPosition(1, shootRay.origin + shootRay.direction * 100f); //라인의 끝을 -> 처음위치 + 방향*길이 (끝없이 라인)
 		}
 	}
-	private void Stop_Repeat_Shot_Lazer()
+
+	private void RemoveLaser()
 	{
-		gunLine.enabled = false; //LineRenderer 끔
+		gunLine.enabled = false; //LineRenderer 끔 (연사 레이져 남아있는거 없애기용)
 	}
-	#endregion
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 854286013700097589}
   - component: {fileID: 3105685571232557245}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HitCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 7153825853149534390}
   - component: {fileID: 7153825853149534389}
   - component: {fileID: 7153825853149534388}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TempEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
