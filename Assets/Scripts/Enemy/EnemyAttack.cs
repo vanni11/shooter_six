@@ -7,7 +7,7 @@ public class EnemyAttack : MonoBehaviour
     public float timeBetweenAttacks = 0.5f;
     public int attackDamage = 10;
 
-    Animator anim;
+    //Animator anim;
     GameObject player;
     PlayerHealth playerHealth;
     bool playerInRange;
@@ -19,10 +19,9 @@ public class EnemyAttack : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>(); // playerHealth의 TakeDamage를 호출하기 위함
-        //anim = GetComponent<Animator>(); //캡슐로 해서 우선 주석
-
-        enemyHealth = GetComponent<EnemyHealth>();
-    }
+		enemyHealth = GetComponent<EnemyHealth>();
+		//anim = GetComponent<Animator>(); //캡슐로 해서 우선 주석
+	}
 
     private void OnTriggerEnter(Collider other)
     {

@@ -5,74 +5,86 @@ using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int startingHealth = 100;
-    public int currentHealth;
-    public float sinkSpeed = 2.5f; // 죽은 적이 바닥으로 가라앉는 속도
-    public int scoreValue = 10; 
-    public AudioClip deathClip; // 죽으면 플레이 되는 오디오 클립
+	public int startingHealth = 100;
+	public int currentHealth;
+	public float sinkSpeed = 2.5f; //죽은 적이 바닥으로 가라앉는 속도
+	public int scoreValue = 10;
+	public AudioClip deathClip; //죽으면 플레이 되는 오디오 클립
 
-    Animator anim;
-    AudioSource enemyAudio;
-    ParticleSystem hitParticles;
-    CapsuleCollider capsuleCollider;
-    bool isDead;
-    bool isSinking;
+	Animator anim;
+	AudioSource enemyAudio;
+	ParticleSystem hitParticles;
+	CapsuleCollider capsuleCollider;
+	bool isDead;
+	bool isSinking;
 
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-        enemyAudio = GetComponent<AudioSource>();
-        hitParticles = GetComponentInChildren<ParticleSystem>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
+	private void Awake()
+	{
+		anim = GetComponent<Animator>();
+		enemyAudio = GetComponent<AudioSource>();
+		hitParticles = GetComponentInChildren<ParticleSystem>();
+		capsuleCollider = GetComponent<CapsuleCollider>();
 
-        currentHealth = startingHealth;
-    }
+		currentHealth = startingHealth;
+	}
 
-    private void Update()
-    {
-        if(isSinking)
-        {
-            transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);// 가라 앉히기
-        }
-    }
+	private void Update()
+	{
+		if (isSinking)
+		{
+			transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);// 가라 앉히기
+		}
+	}
 
-    public void TakeDamage(int amount, Vector3 hitPoint)
-    {
-        if(isDead)
-        {
-            return;
-        }
+	private void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.name == "Bullet(Clone)")
+		{
+			TakeDamage(10, col.transform.position);
+		}
 
-        // enemyAudio.Play();
+	}
 
-        currentHealth -= amount;
+	public void TakeDamage(int amount, Vector3 hitPoint)
+	{
+		if (isDead)
+		{
+			return;
+		}
 
-        hitParticles.transform.position = hitPoint;
-        hitParticles.Play();
+		// enemyAudio.Play();
 
-        if(currentHealth <= 0)
-        {
-            Death();
-        }
-    }
+		currentHealth -= amount;
+		print(currentHealth);
 
-    void Death()
-    {
-        isDead = true;
+		hitParticles.transform.position = hitPoint;
+		hitParticles.Play();
 
-        capsuleCollider.isTrigger = true;
+		if (currentHealth <= 0)
+		{
+			Death();
+		}
+	}
 
-        anim.SetTrigger("Dead");
+	void Death()
+	{
+		isDead = true;
 
-        // enemyAudio.clip = deathClip;
-        // enemyAudio.Play();
-    }
+		capsuleCollider.isTrigger = true;
+		StartSinking();
+		NavMeshAgent nav = GetComponent<NavMeshAgent>();
+		nav.enabled = false;
 
-    public void StartSinking()
-    {
-        GetComponent<NavMeshAgent>().enabled = false;
-        GetComponent<Rigidbody>().isKinematic = true; // 유니티가 다시 계산하지 않는다.
-        isSinking = true;
-        Destroy(gameObject, 2.0f);
-    }
+		//anim.SetTrigger("Dead");
+		// enemyAudio.clip = deathClip;
+		//enemyAudio.Play();
+	}
+
+	public void StartSinking()
+	{
+		GetComponent<NavMeshAgent>().enabled = false;
+		GetComponent<Rigidbody>().isKinematic = true; // 유니티가 다시 계산하지 않는다.
+		isSinking = true;
+		Destroy(gameObject, 2.0f);
+	}
 }

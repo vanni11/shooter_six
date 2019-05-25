@@ -13,8 +13,8 @@ public class PlayerHealth : MonoBehaviour
     public float flashSpeed = 5.0f; // 데미지 입었을 때 깜빡이는 속도?
     public Color flashColor = new Color(1.0f, 0.0f, 0.0f, 0.1f);
 
-    Animator anim;
-    // AudioSource playerAudio;
+    //Animator anim;
+    //AudioSource playerAudio;
     PlayerController playerController;
 
     bool isDead; // 죽었나 확인
@@ -22,8 +22,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
-        // playerAudio = GetComponent<AudioSource>();
+        //anim = GetComponent<Animator>();
+        //playerAudio = GetComponent<AudioSource>();
         playerController = GetComponent<PlayerController>();
 
         currentHealth = startingHealth;
@@ -34,7 +34,6 @@ public class PlayerHealth : MonoBehaviour
         if(damaged)
         {
             damageImage.color = flashColor;
-			print("damaged");
         }
         else
         {
@@ -46,9 +45,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int amount)
     {
         damaged = true;
-
         currentHealth -= amount;
-
         healthSlider.value = currentHealth;
 
         // playerAudio.Play();
@@ -63,10 +60,9 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        anim.SetTrigger("Dead");
-
-        // playerAuydio.clip = deathClip;
-        // playerAudio.Play();
+        //anim.SetTrigger("Dead");
+        //playerAuydio.clip = deathClip;
+        //playerAudio.Play();
 
         playerController.enabled = false;
     }
