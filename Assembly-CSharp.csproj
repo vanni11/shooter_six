@@ -79,8 +79,8 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyHealthBoth.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealthBullet.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyHealthEvery.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealthLaser.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />

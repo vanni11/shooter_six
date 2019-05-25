@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
 	public Transform target; // 추적할 타겟
-	public float smoothing = 5.0f; // 카메라가 움직이는 지연시간
+	public float smoothing = 2f; // 카메라가 움직이는 지연시간
 
 	Vector3 offset; // 카메라와 플레이어의 거리 동일한 거리를 유지하기 위함
 

@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
     //AudioSource playerAudio;
     PlayerController playerController;
 
-    bool isDead; // 죽었나 확인
+    public bool isDead; // 죽었나 확인
     bool damaged; // 데미지를 입었나 확인
 
     private void Awake()

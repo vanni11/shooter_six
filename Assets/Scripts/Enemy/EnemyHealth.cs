@@ -36,6 +36,8 @@ public class EnemyHealth : MonoBehaviour
 		}
 	}
 	
+	//총알은 EnemyHealthBullet.cs에서
+	//레이저는PlayerShooting.cs 에서
 	public void TakeDamage(int amount, Vector3 hitPoint)
 	{
 		if (isDead)
