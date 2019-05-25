@@ -35,16 +35,7 @@ public class EnemyHealth : MonoBehaviour
 			transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);// 가라 앉히기
 		}
 	}
-
-	private void OnCollisionEnter(Collision col)
-	{
-		if (col.gameObject.name == "Bullet(Clone)")
-		{
-			TakeDamage(10, col.transform.position);
-		}
-
-	}
-
+	
 	public void TakeDamage(int amount, Vector3 hitPoint)
 	{
 		if (isDead)
@@ -55,7 +46,6 @@ public class EnemyHealth : MonoBehaviour
 		// enemyAudio.Play();
 
 		currentHealth -= amount;
-		print(currentHealth);
 
 		hitParticles.transform.position = hitPoint;
 		hitParticles.Play();

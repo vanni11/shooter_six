@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-	public GameObject enemyPrefab;
+	public List<GameObject> enemyPrefab = new List<GameObject>();
 	public List<Transform> spawnPoints = new List<Transform>();
 
 	private void Start()
@@ -15,6 +15,6 @@ public class EnemySpawner : MonoBehaviour {
 	private void Spawn()
 	{
 		int randomNum = Random.Range(0, 3);
-		Instantiate(enemyPrefab, spawnPoints[randomNum]);
+		Instantiate(enemyPrefab[randomNum], spawnPoints[randomNum]);
 	}
 }
