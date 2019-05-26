@@ -16,7 +16,8 @@ public class PlayerShooting : MonoBehaviour
 
 	public GameObject bullet; //총알
 	public GameObject bullet2; //총알
-	public float bulletSpeed; //총알속도 //30
+	public float bulletSpeed; //총알속도 //20
+	public float bulletSpeed2; //총알속도 //50
 	float repeat_timer = 0f; //연발간격 시간 초기화용 timer
 	public float repeat_speed; //연발속도 //10
 
@@ -102,7 +103,7 @@ public class PlayerShooting : MonoBehaviour
 
 	private void Single_Bullet_Fire()
 	{
-		GameObject bulletClone = Instantiate(bullet, shootPoint.position, Quaternion.identity);
+		GameObject bulletClone = Instantiate(bullet, shootPoint.position, gameObject.transform.rotation); //단발 총알의 첫 모양을 위해 player의 rotation 가져와서 적용
 		bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
 	}
 
@@ -112,7 +113,7 @@ public class PlayerShooting : MonoBehaviour
 		if (repeat_timer > 1 / repeat_speed)
 		{
 			GameObject bulletClone = Instantiate(bullet2, shootPoint.position, Quaternion.identity);
-			bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+			bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed2;
 			repeat_timer = 0f;
 		}
 	}

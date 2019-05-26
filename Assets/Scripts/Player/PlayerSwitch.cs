@@ -12,11 +12,15 @@ public class PlayerSwitch : MonoBehaviour
 		{
 			playerObjects[0].SetActive(true);
 			playerObjects[1].SetActive(false);
+			GetComponent<PlayerController>().anim = GetComponentInChildren<Animator>();
+			GetComponent<PlayerHealth>().anim = GetComponentInChildren<Animator>();
 		}
-		if (Input.GetKeyDown(KeyCode.Alpha2))
+		else if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
 			playerObjects[0].SetActive(false);
 			playerObjects[1].SetActive(true);
+			GetComponent<PlayerController>().anim = GetComponentInChildren<Animator>();
+			GetComponent<PlayerHealth>().anim = GetComponentInChildren<Animator>();
 		}
 	}
 }

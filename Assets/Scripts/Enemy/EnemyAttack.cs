@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float timeBetweenAttacks = 0.5f;
+	public float timeBetweenAttacks = 0.5f;
     public int attackDamage = 10;
-
-    //Animator anim;
+	
     GameObject player;
     PlayerHealth playerHealth;
     bool playerInRange;
     float timer;
+	EnemyHealth enemyHealth;
 
-    EnemyHealth enemyHealth;
+	//Animator anim;
 
-    private void Awake()
+	private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>(); // playerHealth의 TakeDamage를 호출하기 위함
+        playerHealth = player.GetComponent<PlayerHealth>(); //playerHealth의 TakeDamage를 호출하기 위함
 		enemyHealth = GetComponent<EnemyHealth>();
-		//anim = GetComponent<Animator>(); //캡슐로 해서 우선 주석
+		//anim = GetComponent<Animator>();
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -51,7 +51,7 @@ public class EnemyAttack : MonoBehaviour
 
         if(playerHealth.currentHealth <= 0)
         {
-			//anim.SetTrigger("PlayerDead"); //캡슐로 해서 우선 주석
+			//anim.SetTrigger("PlayerDead");
 		}
 	}
 

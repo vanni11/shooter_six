@@ -5,31 +5,37 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int startingHealth = 100; // 처음 체력
+	PlayerSwitch playerSwitch;
+	PlayerController playerController;
+	PlayerShooting playerShooting;
+
+	public int startingHealth = 100; // 처음 체력
     public int currentHealth; // 현재 체력
     public Slider healthSlider; // 체력 바
     public Image damageImage; // 데미지를 입었을때 이미지
-    public AudioClip deathClip; // 죽었을때 소리
-    public float flashSpeed = 5.0f; // 데미지 입었을 때 깜빡이는 속도?
+    public float flashSpeed = 5.0f; // 데미지 입었을 때 깜빡이는 속도
     public Color flashColor = new Color(1.0f, 0.0f, 0.0f, 0.1f);
-
-    //Animator anim;
-    //AudioSource playerAudio;
-    PlayerController playerController;
-
+	
+	public Animator anim;
+	//AudioSource playerAudio;
+	//public AudioClip deathClip; // 죽었을때 소리
+	
     public bool isDead; // 죽었나 확인
     bool damaged; // 데미지를 입었나 확인
 
     private void Awake()
     {
-        //anim = GetComponent<Animator>();
-        //playerAudio = GetComponent<AudioSource>();
-        playerController = GetComponent<PlayerController>();
+		playerSwitch = GetComponent<PlayerSwitch>();
+		playerController = GetComponent<PlayerController>();
+		playerShooting = GetComponent<PlayerShooting>();
 
         currentHealth = startingHealth;
-    }
 
-    private void Update()
+		anim = GetComponentInChildren<Animator>();
+		//playerAudio = GetComponent<AudioSource>();
+	}
+
+	private void Update()
     {
         if(damaged)
         {
@@ -48,22 +54,24 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         healthSlider.value = currentHealth;
 
-        // playerAudio.Play();
-
         if(currentHealth <= 0 && !isDead)
         {
             Death();
         }
-    }
 
-    public void Death()
+		// playerAudio.Play();
+	}
+
+	public void Death()
     {
-        isDead = true;
+		isDead = true;
 
-        //anim.SetTrigger("Dead");
-        //playerAuydio.clip = deathClip;
-        //playerAudio.Play();
+        anim.SetTrigger("Die");
+		//playerAuydio.clip = deathClip;
+		//playerAudio.Play();
 
-        playerController.enabled = false;
-    }
+		playerSwitch.enabled = false;
+		playerController.enabled = false;
+		playerShooting.enabled = false;
+	}
 }
