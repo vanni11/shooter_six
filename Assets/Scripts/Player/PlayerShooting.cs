@@ -16,7 +16,7 @@ public class PlayerShooting : MonoBehaviour
 
 	public GameObject bullet; //총알
 	public GameObject bullet2; //총알
-	public float bulletSpeed; //총알속도 //20
+	public float bulletSpeed; //총알속도 //40
 	public float bulletSpeed2; //총알속도 //50
 	float repeat_timer = 0f; //연발간격 시간 초기화용 timer
 	public float repeat_speed; //연발속도 //10
