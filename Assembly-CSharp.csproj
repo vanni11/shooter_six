@@ -74,6 +74,7 @@
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Scripts\Misc\LookAtCamera.cs" />
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Scripts\Weapon_Scripts\AutomaticGunScriptLPFP.cs" />
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Scripts\Weapon_Scripts\HandgunScriptLPFP.cs" />
+    <Compile Include="Assets\Bullet Casing\FP_Shooting.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />

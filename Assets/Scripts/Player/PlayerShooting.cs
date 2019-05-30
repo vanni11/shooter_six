@@ -104,7 +104,7 @@ public class PlayerShooting : MonoBehaviour
 	private void Single_Bullet_Fire()
 	{
 		GameObject bulletClone = Instantiate(bullet, shootPoint.position, gameObject.transform.rotation); //단발 총알의 첫 모양을 위해 player의 rotation 가져와서 적용
-		bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+		bulletClone.GetComponentInChildren<Rigidbody>().velocity = transform.forward * bulletSpeed;
 	}
 
 	private void Repeater_Bullet_Fire()
