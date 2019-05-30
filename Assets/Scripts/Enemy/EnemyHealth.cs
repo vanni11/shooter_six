@@ -45,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
 			return;
 		}
 
-		// enemyAudio.Play();
+		//enemyAudio.Play();
 
 		currentHealth -= amount;
 
@@ -67,8 +67,8 @@ public class EnemyHealth : MonoBehaviour
 		NavMeshAgent nav = GetComponent<NavMeshAgent>();
 		nav.enabled = false;
 
-		//anim.SetTrigger("Dead");
-		// enemyAudio.clip = deathClip;
+		anim.SetBool("Die", true);
+		//enemyAudio.clip = deathClip;
 		//enemyAudio.Play();
 	}
 

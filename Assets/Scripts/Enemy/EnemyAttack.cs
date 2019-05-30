@@ -13,14 +13,14 @@ public class EnemyAttack : MonoBehaviour
     float timer;
 	EnemyHealth enemyHealth;
 
-	//Animator anim;
+	Animator anim;
 
 	private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>(); //playerHealth의 TakeDamage를 호출하기 위함
 		enemyHealth = GetComponent<EnemyHealth>();
-		//anim = GetComponent<Animator>();
+		anim = GetComponent<Animator>();
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -48,11 +48,6 @@ public class EnemyAttack : MonoBehaviour
         {
             Attack();
         }
-
-        if(playerHealth.currentHealth <= 0)
-        {
-			//anim.SetTrigger("PlayerDead");
-		}
 	}
 
     void Attack()
@@ -62,6 +57,7 @@ public class EnemyAttack : MonoBehaviour
         if(playerHealth.currentHealth > 0)
         {
             playerHealth.TakeDamage(attackDamage);
-        }
+			anim.SetTrigger("Attack");
+		}
     }
 }

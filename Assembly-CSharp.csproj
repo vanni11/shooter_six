@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_DownloadAsset\BrokenVector\LowPolySurvivalEssentials\Example\Scripts\AnimatedFire.cs" />
+    <Compile Include="Assets\_DownloadAsset\Bullet Casing\FP_Shooting.cs" />
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Demo_Scene_Components\Scripts\DebrisScript.cs" />
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Demo_Scene_Components\Scripts\ExplosiveBarrelScript.cs" />
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Demo_Scene_Components\Scripts\TargetScript.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Scripts\Misc\LookAtCamera.cs" />
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Scripts\Weapon_Scripts\AutomaticGunScriptLPFP.cs" />
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Scripts\Weapon_Scripts\HandgunScriptLPFP.cs" />
-    <Compile Include="Assets\Bullet Casing\FP_Shooting.cs" />
     <Compile Include="Assets\OffTrail.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
@@ -95,7 +95,6 @@
     <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSwitch.cs" />
     <None Include="Assets\_DownloadAsset\Sci-Fi Styled Modular Pack\Readme.txt" />
-    <None Include="Assets\Enemys\Drones\Read me.txt" />
     <None Include="Assets\_DownloadAsset\BrokenVector\LowPolyShaders\Shaders\LowPolyPBRShader.shader" />
     <None Include="Assets\_DownloadAsset\BrokenVector\LowPolyShaders\Shaders\LowPolyUnlitShader.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
