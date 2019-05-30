@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
 	CapsuleCollider capsuleCollider;
 	bool isDead;
 	bool isSinking;
+	public float sinkingStartTime; //애니매이션 끝나고 가라않도록 함, 적마다 다르게 적용해서 어색하지 않게
 
 	private void Awake()
 	{
@@ -28,13 +29,13 @@ public class EnemyHealth : MonoBehaviour
 		currentHealth = startingHealth;
 	}
 
-	private void Update()
-	{
-		if (isSinking)
-		{
-			transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);// 가라 앉히기
-		}
-	}
+	//private void Update()
+	//{
+	//	if (isSinking)
+	//	{
+	//		transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);// 가라 앉히기
+	//	}
+	//}
 	
 	//총알은 EnemyHealthBullet.cs에서
 	//레이저는PlayerShooting.cs 에서
@@ -76,7 +77,17 @@ public class EnemyHealth : MonoBehaviour
 	{
 		GetComponent<NavMeshAgent>().enabled = false;
 		GetComponent<Rigidbody>().isKinematic = true; // 유니티가 다시 계산하지 않는다.
-		isSinking = true;
-		Destroy(gameObject, 2.0f);
+		StartCoroutine(Sinking());
+		Destroy(gameObject, 3.0f);
+	}
+
+	IEnumerator Sinking()
+	{
+		yield return new WaitForSeconds(0.5f);
+		while (gameObject.transform.position.y > -4f)
+		{
+			transform.Translate(-Vector3.up * sinkSpeed * 0.1f);// 가라 앉히기
+			yield return new WaitForSeconds(Time.deltaTime);
+		}
 	}
 }

@@ -75,7 +75,6 @@
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Scripts\Misc\LookAtCamera.cs" />
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Scripts\Weapon_Scripts\AutomaticGunScriptLPFP.cs" />
     <Compile Include="Assets\_DownloadAsset\Low Poly FPS Pack\Components\Scripts\Weapon_Scripts\HandgunScriptLPFP.cs" />
-    <Compile Include="Assets\OffTrail.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
@@ -90,13 +89,18 @@
     <Compile Include="Assets\Scripts\Mech_Scripts\MechShoot.cs" />
     <Compile Include="Assets\Scripts\Mech_Scripts\MechWalk.cs" />
     <Compile Include="Assets\Scripts\Mech_Scripts\Shoot.cs" />
+    <Compile Include="Assets\Scripts\OffTrail.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSwitch.cs" />
     <None Include="Assets\_DownloadAsset\Sci-Fi Styled Modular Pack\Readme.txt" />
+    <None Include="Assets\_DownloadAsset\Robot\Readme.txt" />
+    <None Include="Assets\_DownloadAsset\Robot\Robo1\Animations\Robo1 animations list.txt" />
+    <None Include="Assets\_DownloadAsset\Robot\Robo2\Animations\Robo2 animations list.txt" />
     <None Include="Assets\_DownloadAsset\BrokenVector\LowPolyShaders\Shaders\LowPolyPBRShader.shader" />
     <None Include="Assets\_DownloadAsset\BrokenVector\LowPolyShaders\Shaders\LowPolyUnlitShader.shader" />
+    <None Include="Assets\_DownloadAsset\Robot\Robo3\Animations\Robo3 animations list.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/hoon/Desktop/shooter_six/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
