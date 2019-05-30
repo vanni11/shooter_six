@@ -8,10 +8,10 @@ public class EnemyHealthBullet : EnemyHealth
 	{
 		if (gameObject.name == "EnemyBullet(Clone)")
 		{
-			if (col.gameObject.name == "Bullet(Clone)" && col.gameObject.GetComponent<Bullet>().canAttack)
+			if (col.gameObject.name == "Bullet" && col.gameObject.GetComponentInParent<Bullet>().canAttack) //bullet부모에 transform만있는 오브젝트 추가해서 이렇게바꿈
 			{
 				TakeDamage(20, col.transform.position);
-				col.gameObject.GetComponent<Bullet>().canAttack = false;
+				col.gameObject.GetComponentInParent<Bullet>().canAttack = false;
 			}
 		}
 		else if(gameObject.name == "EnemyBullet2(Clone)")
