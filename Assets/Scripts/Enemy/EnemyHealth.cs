@@ -78,16 +78,16 @@ public class EnemyHealth : MonoBehaviour
 		GetComponent<NavMeshAgent>().enabled = false;
 		GetComponent<Rigidbody>().isKinematic = true; // 유니티가 다시 계산하지 않는다.
 		StartCoroutine(Sinking());
-		Destroy(gameObject, 3.0f);
+		Destroy(gameObject, 4.0f);
 	}
 
 	IEnumerator Sinking()
 	{
 		yield return new WaitForSeconds(0.5f);
-		while (gameObject.transform.position.y > -4f)
+		while (gameObject.transform.position.y > -8f)
 		{
-			transform.Translate(-Vector3.up * sinkSpeed * 0.1f);// 가라 앉히기
-			yield return new WaitForSeconds(Time.deltaTime);
+			transform.Translate(-Vector3.up * sinkSpeed * 0.05f);// 가라 앉히기
+			yield return new WaitForSeconds(0.03f);
 		}
 	}
 }

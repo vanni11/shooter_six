@@ -12,7 +12,10 @@ public enum shootType
 
 public class PlayerShooting : MonoBehaviour
 {
-	Transform shootPoint; //총구위치
+	public Transform shootPoint1; //총구위치
+	public Transform shootPoint2; //총구위치
+	public Transform shootPoint3; //총구위치
+	public Transform shootPoint4; //총구위치
 
 	public GameObject bullet; //총알
 	public GameObject bullet2; //총알
@@ -26,15 +29,15 @@ public class PlayerShooting : MonoBehaviour
 	public LineRenderer gunLine;
 	public LineRenderer gunLine2;
 	int shootableMask;
-	
+
 	public shootType nowShootType = shootType.single_bullet;
 	shootType saveBulletMode = shootType.single_bullet;
 	shootType saveLaserMode = shootType.single_laser;
 
 	private void Awake()
 	{
-		shootPoint = GameObject.Find("ShootPoint").transform;
-		//gunLine = GetComponentInChildren<LineRenderer>(); //총구에 붙어있는 LineRenderer가져옴 //active상태가 아니라서 가져오지 못함 - public으로 직접참조하게 바꿈
+		//shootPoint = GameObject.Find("ShootPoint").transform; //총알마다 나가는 위치 달라야해서 직접 참조하게 바꿈
+		//gunLine = GetComponentInChildren<LineRenderer>(); //총구에 붙어있는 LineRenderer가져옴 //active상태가 아니라서 가져오지 못함 - 직접참조하게 바꿈
 		shootableMask = LayerMask.GetMask("Shootable"); //Inspector에서 Layer를 Shootable로 설정한것들(방해물) 확인
 	}
 
@@ -43,13 +46,11 @@ public class PlayerShooting : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
 			nowShootType = saveBulletMode;
-			shootPoint = GameObject.Find("ShootPoint").transform;
 			RemoveLaser();
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
 			nowShootType = saveLaserMode;
-			shootPoint = GameObject.Find("ShootPoint").transform;
 			RemoveLaser();
 		}
 		else if (Input.GetKeyDown(KeyCode.Space))
@@ -103,7 +104,11 @@ public class PlayerShooting : MonoBehaviour
 
 	private void Single_Bullet_Fire()
 	{
-		GameObject bulletClone = Instantiate(bullet, shootPoint.position, gameObject.transform.rotation); //단발 총알의 첫 모양을 위해 player의 rotation 가져와서 적용
+		////Bullet1이 쏴질때 총과 충돌해서 Trail Renderer 비활성화 되는거 -> z값 올려서 충돌안하게해서 고침
+		//Vector3 Bullet1ShootPosition = new Vector3();
+		//Bullet1ShootPosition = shootPoint.position;
+		//Bullet1ShootPosition.z = shootPoint.position.z + 1f;
+		GameObject bulletClone = Instantiate(bullet, shootPoint1.position, gameObject.transform.rotation); //단발 총알의 첫 모양을 위해 player의 rotation 가져와서 적용
 		bulletClone.GetComponentInChildren<Rigidbody>().velocity = transform.forward * bulletSpeed;
 	}
 
@@ -112,7 +117,7 @@ public class PlayerShooting : MonoBehaviour
 		repeat_timer += Time.deltaTime;
 		if (repeat_timer > 1 / repeat_speed)
 		{
-			GameObject bulletClone = Instantiate(bullet2, shootPoint.position, Quaternion.identity);
+			GameObject bulletClone = Instantiate(bullet2, shootPoint2.position, Quaternion.identity);
 			bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed2;
 			repeat_timer = 0f;
 		}
@@ -126,8 +131,8 @@ public class PlayerShooting : MonoBehaviour
 	IEnumerator LaserOneShot()
 	{
 		gunLine.enabled = true; //라인그린다
-		gunLine.SetPosition(0, shootPoint.position); //라인의 시작을 총구로
-		shootRay.origin = shootPoint.position; //Ray의 시작을 총구로
+		gunLine.SetPosition(0, shootPoint3.position); //라인의 시작을 총구로
+		shootRay.origin = shootPoint3.position; //Ray의 시작을 총구로
 		shootRay.direction = transform.forward; //Ray의 방향을 총구방향으로
 
 		DrawLaser();
@@ -138,8 +143,8 @@ public class PlayerShooting : MonoBehaviour
 	private void Repeat_Laser_Fire()
 	{
 		gunLine2.enabled = true; //라인그린다
-		gunLine2.SetPosition(0, shootPoint.position); //라인의 시작을 총구로
-		shootRay.origin = shootPoint.position; //Ray의 시작을 총구로
+		gunLine2.SetPosition(0, shootPoint4.position); //라인의 시작을 총구로
+		shootRay.origin = shootPoint4.position; //Ray의 시작을 총구로
 		shootRay.direction = transform.forward; //Ray의 방향을 총구방향으로
 
 		DrawLaser2();
@@ -155,7 +160,7 @@ public class PlayerShooting : MonoBehaviour
 				EnemyHealthLaser health = shootHit.transform.GetComponent<EnemyHealthLaser>();
 				health.TakeDamage(20, health.gameObject.transform.position);
 			}
-			else if(shootHit.transform.name == "EnemyEvery(Clone)")
+			else if (shootHit.transform.name == "EnemyEvery(Clone)")
 			{
 				EnemyHealthEvery health = shootHit.transform.GetComponent<EnemyHealthEvery>();
 				health.TakeDamage(20, health.gameObject.transform.position);
@@ -189,7 +194,7 @@ public class PlayerShooting : MonoBehaviour
 		}
 	}
 
-	private void RemoveLaser()
+	public void RemoveLaser()
 	{
 		gunLine2.enabled = false; //LineRenderer 끔 (연사 레이져 남아있는거 없애기용)
 	}

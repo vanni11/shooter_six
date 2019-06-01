@@ -70,6 +70,7 @@ public class PlayerHealth : MonoBehaviour
 		//playerAuydio.clip = deathClip;
 		//playerAudio.Play();
 
+		playerShooting.RemoveLaser(); //노랑레이저 쏘면서 죽으면 남아서..
 		playerSwitch.enabled = false;
 		playerController.enabled = false;
 		playerShooting.enabled = false;

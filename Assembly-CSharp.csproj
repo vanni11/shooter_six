@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSwitch.cs" />
+    <Compile Include="Assets\Scripts\Player\RifleColorChanger.cs" />
     <None Include="Assets\_DownloadAsset\Sci-Fi Styled Modular Pack\Readme.txt" />
     <None Include="Assets\_DownloadAsset\Robot\Readme.txt" />
     <None Include="Assets\_DownloadAsset\Robot\Robo1\Animations\Robo1 animations list.txt" />

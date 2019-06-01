@@ -60,7 +60,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4024281110184493449}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3908234812261995889
 SkinnedMeshRenderer:
@@ -207,13 +207,13 @@ Transform:
   m_LocalPosition: {x: 3.6100001, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4023671414855575014}
+  - {fileID: 4023671413788249116}
   - {fileID: 4018943339573936171}
   - {fileID: 4019139970806830119}
   - {fileID: 4024411137915067389}
   - {fileID: 4023981449934352537}
   - {fileID: 4019090836627592001}
-  - {fileID: 4023671414855575014}
-  - {fileID: 4023671413788249116}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -246,7 +246,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.75
+  m_Radius: 0.7
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
@@ -285,7 +285,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.15
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4021806666214738036
@@ -312,11 +312,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fffc62608e1a1c4fb969b2b94db5e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 120
   currentHealth: 0
   sinkSpeed: 2.5
   scoreValue: 10
   deathClip: {fileID: 0}
+  sinkingStartTime: 0
 --- !u!114 &4021806666214738034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +391,7 @@ Transform:
   m_LocalScale: {x: 0.006, y: 0.005, z: 0.0028}
   m_Children: []
   m_Father: {fileID: 4024281110184493449}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3905069262060968657
 SkinnedMeshRenderer:
@@ -502,7 +503,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4024281110184493449}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3909006246501859925
 SkinnedMeshRenderer:
@@ -595,7 +596,7 @@ Transform:
   - {fileID: 4019068075296936843}
   - {fileID: 4024098494695103117}
   m_Father: {fileID: 4024281110184493449}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4022670005647847519
 GameObject:
@@ -779,7 +780,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4024281110184493449}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3904964250170018273
 SkinnedMeshRenderer:
@@ -936,7 +937,7 @@ GameObject:
   - component: {fileID: 4023671413788249116}
   - component: {fileID: 4023671413788249117}
   m_Layer: 10
-  m_Name: Collider
+  m_Name: HitCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -954,7 +955,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4024281110184493449}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &4023671413788249117
 CapsuleCollider:
@@ -966,10 +967,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.8
-  m_Height: 2.5
+  m_Radius: 0.85
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &4023671414855575013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1001,7 @@ Transform:
   m_LocalScale: {x: 0.12999998, y: 0.14999999, z: 0.12999998}
   m_Children: []
   m_Father: {fileID: 4024281110184493449}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4023671414855575016
 ParticleSystem:
