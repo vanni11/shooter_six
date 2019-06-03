@@ -4946,9 +4946,8 @@ MonoBehaviour:
   startingHealth: 100
   currentHealth: 0
   sinkSpeed: 2.5
-  scoreValue: 10
-  deathClip: {fileID: 0}
   sinkingStartTime: 0
+  deathClip: {fileID: 0}
 --- !u!114 &2154895685795218341
 MonoBehaviour:
   m_ObjectHideFlags: 0

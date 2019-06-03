@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyHealthEvery.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealthLaser.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\FpsCheck.cs" />
     <Compile Include="Assets\Scripts\Mech_Scripts\FootSteps.cs" />
     <Compile Include="Assets\Scripts\Mech_Scripts\MechHit.cs" />
     <Compile Include="Assets\Scripts\Mech_Scripts\MechShoot.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSwitch.cs" />
     <Compile Include="Assets\Scripts\Player\RifleColorChanger.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
     <None Include="Assets\_DownloadAsset\Sci-Fi Styled Modular Pack\Readme.txt" />
     <None Include="Assets\_DownloadAsset\Robot\Readme.txt" />
     <None Include="Assets\_DownloadAsset\Robot\Robo1\Animations\Robo1 animations list.txt" />

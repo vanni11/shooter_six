@@ -8,65 +8,70 @@ public class PlayerHealth : MonoBehaviour
 	PlayerSwitch playerSwitch;
 	PlayerController playerController;
 	PlayerShooting playerShooting;
+	public RifleColorChanger[] rifleColorChanger = new RifleColorChanger[2]; //꺼져있는 오브젝트에서 가져와야해서 직접참조시킴
 
 	public int startingHealth = 100; // 처음 체력
-    public int currentHealth; // 현재 체력
-    public Slider healthSlider; // 체력 바
-    public Image damageImage; // 데미지를 입었을때 이미지
-    public float flashSpeed = 5.0f; // 데미지 입었을 때 깜빡이는 속도
-    public Color flashColor = new Color(1.0f, 0.0f, 0.0f, 0.1f);
-	
+	public int currentHealth; // 현재 체력
+	public Slider healthSlider; // 체력 바
+	public Image damageImage; // 데미지를 입었을때 이미지
+	public float flashSpeed = 5.0f; // 데미지 입었을 때 깜빡이는 속도
+	public Color flashColor = new Color(1.0f, 0.0f, 0.0f, 0.1f);
+
 	public Animator anim;
 	//AudioSource playerAudio;
 	//public AudioClip deathClip; // 죽었을때 소리
-	
-    public bool isDead; // 죽었나 확인
-    bool damaged; // 데미지를 입었나 확인
 
-    private void Awake()
-    {
+	public bool isDead; // 죽었나 확인
+	bool damaged; // 데미지를 입었나 확인
+
+	UIManager uIManager;
+
+	private void Awake()
+	{
 		playerSwitch = GetComponent<PlayerSwitch>();
 		playerController = GetComponent<PlayerController>();
 		playerShooting = GetComponent<PlayerShooting>();
 
-        currentHealth = startingHealth;
+		currentHealth = startingHealth;
 
 		anim = GetComponentInChildren<Animator>();
 		//playerAudio = GetComponent<AudioSource>();
+
+		uIManager = FindObjectOfType<UIManager>();
 	}
 
 	private void Update()
-    {
-        if(damaged)
-        {
-            damageImage.color = flashColor;
-        }
-        else
-        {
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
-        damaged = false;
-    }
+	{
+		if (damaged)
+		{
+			damageImage.color = flashColor;
+		}
+		else
+		{
+			damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+		}
+		damaged = false;
+	}
 
-    public void TakeDamage(int amount)
-    {
-        damaged = true;
-        currentHealth -= amount;
-        healthSlider.value = currentHealth;
+	public void TakeDamage(int amount)
+	{
+		damaged = true;
+		currentHealth -= amount;
+		healthSlider.value = currentHealth;
 
-        if(currentHealth <= 0 && !isDead)
-        {
-            Death();
-        }
+		if (currentHealth <= 0 && !isDead)
+		{
+			Death();
+		}
 
 		// playerAudio.Play();
 	}
 
 	public void Death()
-    {
+	{
 		isDead = true;
 
-        anim.SetTrigger("Die");
+		anim.SetTrigger("Die");
 		//playerAuydio.clip = deathClip;
 		//playerAudio.Play();
 
@@ -74,5 +79,9 @@ public class PlayerHealth : MonoBehaviour
 		playerSwitch.enabled = false;
 		playerController.enabled = false;
 		playerShooting.enabled = false;
+		rifleColorChanger[0].enabled = false;
+		rifleColorChanger[1].enabled = false;
+
+		StartCoroutine(uIManager.Gameover());
 	}
 }

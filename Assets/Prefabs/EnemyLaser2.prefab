@@ -314,10 +314,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 120
   currentHealth: 0
-  sinkSpeed: 2.5
-  scoreValue: 10
-  deathClip: {fileID: 0}
+  sinkSpeed: 4
   sinkingStartTime: 0
+  deathClip: {fileID: 0}
 --- !u!114 &4021806666214738034
 MonoBehaviour:
   m_ObjectHideFlags: 0

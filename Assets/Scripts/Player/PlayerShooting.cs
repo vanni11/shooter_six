@@ -33,6 +33,8 @@ public class PlayerShooting : MonoBehaviour
 	public shootType nowShootType = shootType.single_bullet;
 	shootType saveBulletMode = shootType.single_bullet;
 	shootType saveLaserMode = shootType.single_laser;
+	
+	public float singleShotTimer = 0f;
 
 	private void Awake()
 	{
@@ -43,6 +45,7 @@ public class PlayerShooting : MonoBehaviour
 
 	private void Update()
 	{
+		singleShotTimer += Time.deltaTime;
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
 			nowShootType = saveBulletMode;
@@ -88,6 +91,11 @@ public class PlayerShooting : MonoBehaviour
 			{
 				Single_Laser_Fire();
 			}
+			//레이져 보여지는 시간 설정
+			if(singleShotTimer > Time.deltaTime * 1.5f)
+			{
+				gunLine.enabled = false; //LineRenderer 끔
+			}
 		}
 		else if (nowShootType == shootType.repeater_laser)
 		{
@@ -104,12 +112,12 @@ public class PlayerShooting : MonoBehaviour
 
 	private void Single_Bullet_Fire()
 	{
-		////Bullet1이 쏴질때 총과 충돌해서 Trail Renderer 비활성화 되는거 -> z값 올려서 충돌안하게해서 고침
-		//Vector3 Bullet1ShootPosition = new Vector3();
-		//Bullet1ShootPosition = shootPoint.position;
-		//Bullet1ShootPosition.z = shootPoint.position.z + 1f;
-		GameObject bulletClone = Instantiate(bullet, shootPoint1.position, gameObject.transform.rotation); //단발 총알의 첫 모양을 위해 player의 rotation 가져와서 적용
-		bulletClone.GetComponentInChildren<Rigidbody>().velocity = transform.forward * bulletSpeed;
+		if(singleShotTimer > Time.deltaTime * 3f)
+		{
+			GameObject bulletClone = Instantiate(bullet, shootPoint1.position, gameObject.transform.rotation); //단발 총알의 첫 모양을 위해 player의 rotation 가져와서 적용
+			bulletClone.GetComponentInChildren<Rigidbody>().velocity = transform.forward * bulletSpeed;
+			singleShotTimer = 0f;
+		}
 	}
 
 	private void Repeater_Bullet_Fire()
@@ -125,21 +133,18 @@ public class PlayerShooting : MonoBehaviour
 
 	private void Single_Laser_Fire()
 	{
-		StartCoroutine(LaserOneShot());
+		if (singleShotTimer > Time.deltaTime * 3f)
+		{
+			gunLine.enabled = true; //라인그린다
+			gunLine.SetPosition(0, shootPoint3.position); //라인의 시작을 총구로
+			shootRay.origin = shootPoint3.position; //Ray의 시작을 총구로
+			shootRay.direction = transform.forward; //Ray의 방향을 총구방향으로
+
+			DrawLaser();
+			singleShotTimer = 0f;
+		}
 	}
-
-	IEnumerator LaserOneShot()
-	{
-		gunLine.enabled = true; //라인그린다
-		gunLine.SetPosition(0, shootPoint3.position); //라인의 시작을 총구로
-		shootRay.origin = shootPoint3.position; //Ray의 시작을 총구로
-		shootRay.direction = transform.forward; //Ray의 방향을 총구방향으로
-
-		DrawLaser();
-		yield return new WaitForSeconds(Time.deltaTime * 1.5f); //1.5프레임 기다리고
-		gunLine.enabled = false; //LineRenderer 끔
-	}
-
+	
 	private void Repeat_Laser_Fire()
 	{
 		gunLine2.enabled = true; //라인그린다

@@ -2,40 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
 	public int startingHealth = 100;
 	public int currentHealth;
-	public float sinkSpeed = 2.5f; //죽은 적이 바닥으로 가라앉는 속도
-	public int scoreValue = 10;
-	public AudioClip deathClip; //죽으면 플레이 되는 오디오 클립
 
-	Animator anim;
-	AudioSource enemyAudio;
-	ParticleSystem hitParticles;
-	CapsuleCollider capsuleCollider;
 	bool isDead;
+	public float sinkSpeed; //죽은 적이 바닥으로 가라앉는 속도
 	bool isSinking;
 	public float sinkingStartTime; //애니매이션 끝나고 가라않도록 함, 적마다 다르게 적용해서 어색하지 않게
+	
+	ParticleSystem hitParticles;
+	CapsuleCollider capsuleCollider;
+	
+	Animator anim;
+	public AudioClip deathClip; //죽으면 플레이 되는 오디오 클립
+	AudioSource enemyAudio;
+
+	UIManager uiManager;
 
 	private void Awake()
 	{
-		anim = GetComponent<Animator>();
-		enemyAudio = GetComponent<AudioSource>();
+		currentHealth = startingHealth;
+
 		hitParticles = GetComponentInChildren<ParticleSystem>();
 		capsuleCollider = GetComponent<CapsuleCollider>();
+		anim = GetComponent<Animator>();
+		enemyAudio = GetComponent<AudioSource>();
 
-		currentHealth = startingHealth;
+		uiManager = FindObjectOfType<UIManager>();
 	}
-
-	//private void Update()
-	//{
-	//	if (isSinking)
-	//	{
-	//		transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);// 가라 앉히기
-	//	}
-	//}
 	
 	//총알은 EnemyHealthBullet.cs에서
 	//레이저는PlayerShooting.cs 에서
@@ -71,6 +69,9 @@ public class EnemyHealth : MonoBehaviour
 		anim.SetBool("Die", true);
 		//enemyAudio.clip = deathClip;
 		//enemyAudio.Play();
+
+		uiManager.score += 10;
+		uiManager.SetScoreText();
 	}
 
 	public void StartSinking()

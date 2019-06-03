@@ -583,10 +583,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 200
   currentHealth: 0
-  sinkSpeed: 2.5
-  scoreValue: 10
-  deathClip: {fileID: 0}
+  sinkSpeed: 6
   sinkingStartTime: 0
+  deathClip: {fileID: 0}
 --- !u!114 &3864547754015109660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,7 +930,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eac569fffc8708e45bfc4d3eb33a7055, type: 2}
+  - {fileID: 2100000, guid: 30e4d6e244e28ae4eb0a10ee2e666dca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
