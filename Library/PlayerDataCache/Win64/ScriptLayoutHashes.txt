@@ -118,6 +118,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+4d3245f8f56829dc0db01b97857cce44 Assembly-CSharp.dll:.UIManager
 8bf14ea4c2573341442cfb01300f46e1 Assembly-CSharp.dll:.DebrisScript
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
@@ -185,10 +186,9 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 2a15e42436e20838c765c329b30b263a Assembly-CSharp.dll:.PlayerSwitch
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MechWalk
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
+e95506e2464cd7cee6282a52c58e7d46 Assembly-CSharp.dll:.FpsCheck
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 d0f178108358bda370494cb5dc558567 Assembly-CSharp.dll:.EnemySpawner
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 3bb1933f5afa4a59161fe0eb5d6ca49d Assembly-CSharp.dll:.EnemyHealthBullet
-4d3245f8f56829dc0db01b97857cce44 Assembly-CSharp.dll:.UIManager
-e95506e2464cd7cee6282a52c58e7d46 Assembly-CSharp.dll:.FpsCheck
