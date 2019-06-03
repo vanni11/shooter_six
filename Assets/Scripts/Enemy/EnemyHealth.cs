@@ -19,9 +19,13 @@ public class EnemyHealth : MonoBehaviour
 	
 	Animator anim;
 	public AudioClip deathClip; //죽으면 플레이 되는 오디오 클립
+	public GameObject explodeParticle;
 	AudioSource enemyAudio;
 
 	UIManager uiManager;
+
+	Vector3 originAngle;
+	public float cameraShakeValue;
 
 	private void Awake()
 	{
@@ -33,6 +37,8 @@ public class EnemyHealth : MonoBehaviour
 		enemyAudio = GetComponent<AudioSource>();
 
 		uiManager = FindObjectOfType<UIManager>();
+
+		originAngle = Camera.main.transform.eulerAngles;
 	}
 	
 	//총알은 EnemyHealthBullet.cs에서
@@ -57,7 +63,7 @@ public class EnemyHealth : MonoBehaviour
 		}
 	}
 
-	void Death()
+	protected virtual void Death()
 	{
 		isDead = true;
 
@@ -72,6 +78,8 @@ public class EnemyHealth : MonoBehaviour
 
 		uiManager.score += 10;
 		uiManager.SetScoreText();
+
+		StartCoroutine(CameraShock());
 	}
 
 	public void StartSinking()
@@ -90,5 +98,19 @@ public class EnemyHealth : MonoBehaviour
 			transform.Translate(-Vector3.up * sinkSpeed * 0.05f);// 가라 앉히기
 			yield return new WaitForSeconds(0.03f);
 		}
+	}
+
+	
+	IEnumerator CameraShock()
+	{
+		float j = 0.9f * cameraShakeValue;
+		for (int i = 0; i < 7; i++)
+		{
+			Vector3 myRandom = Random.insideUnitSphere;
+			Camera.main.transform.eulerAngles = originAngle + myRandom * j;
+			j = j * 0.8f;
+			yield return new WaitForSecondsRealtime(0.02f);
+		}
+		Camera.main.transform.eulerAngles = originAngle;
 	}
 }

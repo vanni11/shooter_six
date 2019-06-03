@@ -219,6 +219,9 @@ MonoBehaviour:
   sinkSpeed: 3
   sinkingStartTime: 0
   deathClip: {fileID: 0}
+  explodeParticle: {fileID: 4758981830154638106, guid: 4c878cf2056b9dc4fa57806475890d31,
+    type: 3}
+  cameraShakeValue: 0.5
 --- !u!114 &6159173398360337260
 MonoBehaviour:
   m_ObjectHideFlags: 0

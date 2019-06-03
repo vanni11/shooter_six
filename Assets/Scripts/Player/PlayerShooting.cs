@@ -45,6 +45,7 @@ public class PlayerShooting : MonoBehaviour
 
 	private void Update()
 	{
+		//공격타입 바꾸기
 		singleShotTimer += Time.deltaTime;
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
@@ -71,6 +72,7 @@ public class PlayerShooting : MonoBehaviour
 			RemoveLaser();
 		}
 
+		//마우스 눌렀을때 나가는 공격
 		if (nowShootType == shootType.single_bullet)
 		{
 			if (Input.GetMouseButtonDown(0))
@@ -201,6 +203,7 @@ public class PlayerShooting : MonoBehaviour
 
 	public void RemoveLaser()
 	{
-		gunLine2.enabled = false; //LineRenderer 끔 (연사 레이져 남아있는거 없애기용)
+		gunLine.enabled = false; //LineRenderer 끔 (레이져 남아있는거 없애기용)
+		gunLine2.enabled = false;
 	}
 }

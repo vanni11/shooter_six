@@ -17,4 +17,15 @@ public class EnemyHealthEvery : EnemyHealth
 			col.gameObject.GetComponent<Bullet>().canAttack = false;
 		}
 	}
+
+	protected override void Death()
+	{
+		base.Death();
+		Instantiate(explodeParticle, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform);
+		ParticleSystem[] particles = explodeParticle.GetComponentsInChildren<ParticleSystem>();
+		foreach (ParticleSystem p in particles)
+		{
+			p.Play();
+		}
+	}
 }
