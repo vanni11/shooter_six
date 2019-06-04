@@ -1,12 +1,11 @@
 Win64
 PlayerPath?
-C:/Users/hoon/Desktop/shooter_six/Test1.exe
+C:/Users/hoon/Desktop/shooter_six/Test2.exe
 SceneListBegin?
 Assets/Scenes/PlayScene.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
-bdbfeb157234db1da4eee3f7de76d110 Assembly-CSharp.dll:.FootSteps
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 780e8f682b3221346c034a6712a0fd25 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -21,7 +20,7 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.P
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 e38c89741d86cfc79b1cdde1da3b3863 Assembly-CSharp.dll:.CasingScript
-30d16b246e6c1444b1880635bedc9c5f Assembly-CSharp.dll:.PlayerController
+be6c2b8546b441659201324f674b5e8d Assembly-CSharp.dll:.PlayerController
 b7e120081798764061cc0a19bf284e1b Assembly-CSharp.dll:.RifleColorChanger
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -122,8 +121,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 8bf14ea4c2573341442cfb01300f46e1 Assembly-CSharp.dll:.DebrisScript
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
-b045547873ea66dd7a921766cfe78c9d Assembly-CSharp.dll:.PlayerHealth
-5350846ae54ea08a472058412b092dd4 Assembly-CSharp.dll:.MechHit
+86b8457e67a922abe2f54390c99572e0 Assembly-CSharp.dll:.PlayerHealth
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 7003551f5d2a1e674c8ed745dcedb0ac Assembly-CSharp.dll:.ImpactScript
 0936b736e5ca050cb7d2853b1d8a4d6b Assembly-CSharp.dll:.EnemyHealthLaser
@@ -133,7 +131,7 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 6af99a33a27dd02a47b9ca4032f7b50d Assembly-CSharp.dll:.BulletScript
 0936b736e5ca050cb7d2853b1d8a4d6b Assembly-CSharp.dll:.EnemyHealthEvery
-783dab0894ddd4ff17281dd9f9a7b47f Assembly-CSharp.dll:.PlayerShooting
+496b9e2389d1d41a2ec807e8c62bd0fa Assembly-CSharp.dll:.PlayerShooting
 5a53671008ad6f68b0d110f7c70d732d Assembly-CSharp.dll:.TargetScript
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 aa537a2a99418618903ba5ea365837a5 Assembly-CSharp.dll:.ExplosionScript
@@ -157,11 +155,9 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 15e780e0c1d9817234f97a184cb6bab5 Assembly-CSharp.dll:.OffTrail
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.EnemyController
 7fe1677739b73c9b6f63468e0b5fed5c Assembly-CSharp.dll:.ExplosiveBarrelScript
-b28c9347c2e61851c8c01b07ce172c82 Assembly-CSharp.dll:.MechShoot
 510fefd6a544e16a3ffefa557ddcba39 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
 aa82b3ce4c0c9b227036c0337315c5d3 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Shoot
 df69d0b5057ca9ea660270e6660fc67c Assembly-CSharp.dll:.AutomaticGunScriptLPFP
 cf96e5f7b3d069bab453925bd41be04e UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
@@ -184,7 +180,6 @@ edb79cad05090e9cc791ee119dcfa388 Assembly-CSharp.dll:.FP_Shooting
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 934b7bd39e08e981569117fd6e1cd4fe Assembly-CSharp.dll:.Bullet
 2a15e42436e20838c765c329b30b263a Assembly-CSharp.dll:.PlayerSwitch
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MechWalk
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 e95506e2464cd7cee6282a52c58e7d46 Assembly-CSharp.dll:.FpsCheck
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
@@ -192,3 +187,4 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 d0f178108358bda370494cb5dc558567 Assembly-CSharp.dll:.EnemySpawner
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 0936b736e5ca050cb7d2853b1d8a4d6b Assembly-CSharp.dll:.EnemyHealthBullet
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DontDestroyOnLoad

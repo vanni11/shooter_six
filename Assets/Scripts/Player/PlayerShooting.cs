@@ -36,11 +36,15 @@ public class PlayerShooting : MonoBehaviour
 	
 	public float singleShotTimer = 0f;
 
+	AudioSource audioSource;
+	public List<AudioClip> shootAudios = new List<AudioClip>();
+
 	private void Awake()
 	{
 		//shootPoint = GameObject.Find("ShootPoint").transform; //총알마다 나가는 위치 달라야해서 직접 참조하게 바꿈
 		//gunLine = GetComponentInChildren<LineRenderer>(); //총구에 붙어있는 LineRenderer가져옴 //active상태가 아니라서 가져오지 못함 - 직접참조하게 바꿈
 		shootableMask = LayerMask.GetMask("Shootable"); //Inspector에서 Layer를 Shootable로 설정한것들(방해물) 확인
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	private void Update()
@@ -119,6 +123,8 @@ public class PlayerShooting : MonoBehaviour
 			GameObject bulletClone = Instantiate(bullet, shootPoint1.position, gameObject.transform.rotation); //단발 총알의 첫 모양을 위해 player의 rotation 가져와서 적용
 			bulletClone.GetComponentInChildren<Rigidbody>().velocity = transform.forward * bulletSpeed;
 			singleShotTimer = 0f;
+			audioSource.volume = 0.2f;
+			audioSource.PlayOneShot(shootAudios[0]);
 		}
 	}
 
@@ -130,6 +136,8 @@ public class PlayerShooting : MonoBehaviour
 			GameObject bulletClone = Instantiate(bullet2, shootPoint2.position, Quaternion.identity);
 			bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed2;
 			repeat_timer = 0f;
+			audioSource.volume = 1f;
+			audioSource.PlayOneShot(shootAudios[1]);
 		}
 	}
 
@@ -144,6 +152,8 @@ public class PlayerShooting : MonoBehaviour
 
 			DrawLaser();
 			singleShotTimer = 0f;
+			audioSource.volume = 0.2f;
+			audioSource.PlayOneShot(shootAudios[2]);
 		}
 	}
 	
@@ -153,8 +163,9 @@ public class PlayerShooting : MonoBehaviour
 		gunLine2.SetPosition(0, shootPoint4.position); //라인의 시작을 총구로
 		shootRay.origin = shootPoint4.position; //Ray의 시작을 총구로
 		shootRay.direction = transform.forward; //Ray의 방향을 총구방향으로
-
 		DrawLaser2();
+		audioSource.volume = 1f;
+		audioSource.PlayOneShot(shootAudios[3]);
 	}
 
 	void DrawLaser()
@@ -165,12 +176,12 @@ public class PlayerShooting : MonoBehaviour
 			if (shootHit.transform.name == "EnemyLaser(Clone)")
 			{
 				EnemyHealthLaser health = shootHit.transform.GetComponent<EnemyHealthLaser>();
-				health.TakeDamage(20, health.gameObject.transform.position);
+				health.TakeDamage(25, health.gameObject.transform.position);
 			}
 			else if (shootHit.transform.name == "EnemyEvery(Clone)")
 			{
 				EnemyHealthEvery health = shootHit.transform.GetComponent<EnemyHealthEvery>();
-				health.TakeDamage(20, health.gameObject.transform.position);
+				health.TakeDamage(25, health.gameObject.transform.position);
 			}
 		}
 		else //방해물이 아닌것에 맞으면

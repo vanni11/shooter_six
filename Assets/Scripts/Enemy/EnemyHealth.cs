@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
 	public GameObject explodeParticle;
 	AudioSource enemyAudio;
 
-	UIManager uiManager;
+	protected UIManager uiManager;
 
 	Vector3 originAngle;
 	public float cameraShakeValue;
@@ -73,8 +73,7 @@ public class EnemyHealth : MonoBehaviour
 		nav.enabled = false;
 
 		anim.SetBool("Die", true);
-		//enemyAudio.clip = deathClip;
-		//enemyAudio.Play();
+		enemyAudio.PlayOneShot(deathClip);
 
 		uiManager.score += 10;
 		uiManager.SetScoreText();

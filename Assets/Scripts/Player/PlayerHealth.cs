@@ -18,8 +18,10 @@ public class PlayerHealth : MonoBehaviour
 	public Color flashColor = new Color(1.0f, 0.0f, 0.0f, 0.1f);
 
 	public Animator anim;
-	//AudioSource playerAudio;
-	//public AudioClip deathClip; // 죽었을때 소리
+	//쏘는 사운드와 맞는 사운드 별개로 해야해서 오브젝트 따로만듬
+	public AudioSource audioSource; //맞고 죽는용
+	public AudioClip damagedClip; //맞을때 소리
+	public AudioClip deathClip; // 죽었을때 소리
 
 	public bool isDead; // 죽었나 확인
 	bool damaged; // 데미지를 입었나 확인
@@ -38,6 +40,8 @@ public class PlayerHealth : MonoBehaviour
 		//playerAudio = GetComponent<AudioSource>();
 
 		uIManager = FindObjectOfType<UIManager>();
+
+		audioSource = GetComponentInChildren<AudioSource>(); 
 	}
 
 	private void Update()
@@ -63,8 +67,8 @@ public class PlayerHealth : MonoBehaviour
 		{
 			Death();
 		}
-
-		// playerAudio.Play();
+		
+		audioSource.PlayOneShot(damagedClip);
 	}
 
 	public void Death()
@@ -72,8 +76,7 @@ public class PlayerHealth : MonoBehaviour
 		isDead = true;
 
 		anim.SetTrigger("Die");
-		//playerAuydio.clip = deathClip;
-		//playerAudio.Play();
+		audioSource.PlayOneShot(deathClip);
 
 		playerShooting.RemoveLaser(); //노랑레이저 쏘면서 죽으면 남아서..
 		playerSwitch.enabled = false;

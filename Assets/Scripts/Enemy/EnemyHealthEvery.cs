@@ -21,6 +21,8 @@ public class EnemyHealthEvery : EnemyHealth
 	protected override void Death()
 	{
 		base.Death();
+		uiManager.score += 40; //보스는 50점득점
+		uiManager.SetScoreText();
 		Instantiate(explodeParticle, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform);
 		ParticleSystem[] particles = explodeParticle.GetComponentsInChildren<ParticleSystem>();
 		foreach (ParticleSystem p in particles)
