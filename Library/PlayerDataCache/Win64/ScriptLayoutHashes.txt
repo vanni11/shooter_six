@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/hoon/Desktop/shooter_six/Test2.exe
+C:/Users/hoon/Desktop/shooter_six/빌드/Test2.exe
 SceneListBegin?
 Assets/Scenes/PlayScene.unity
 SceneListEnd?
@@ -127,6 +127,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 0936b736e5ca050cb7d2853b1d8a4d6b Assembly-CSharp.dll:.EnemyHealthLaser
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LookAtCamera
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DontDestroyOnLoad
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 6af99a33a27dd02a47b9ca4032f7b50d Assembly-CSharp.dll:.BulletScript
@@ -187,4 +188,3 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 d0f178108358bda370494cb5dc558567 Assembly-CSharp.dll:.EnemySpawner
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 0936b736e5ca050cb7d2853b1d8a4d6b Assembly-CSharp.dll:.EnemyHealthBullet
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DontDestroyOnLoad

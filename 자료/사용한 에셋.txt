@@ -1,0 +1,16 @@
+플레이어
+https://assetstore.unity.com/packages/3d/characters/humanoids/sci-fi-warrior-pbr-hp-106154
+적 모델/애니매이션
+https://assetstore.unity.com/packages/3d/characters/robots/scifi-enemies-and-vehicles-15159
+레이저적 모델/애니매이션
+https://assetstore.unity.com/packages/3d/characters/robots/tiny-robots-pack-98930
+보스 모델/애니매이션
+https://assetstore.unity.com/packages/3d/characters/robots/robot-1-65726
+총알
+https://assetstore.unity.com/packages/3d/characters/bullet-casing-fx-120111
+맵
+https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-styled-modular-pack-82913
+배경음악
+https://assetstore.unity.com/packages/audio/music/the-invasion-atmospheric-title-screen-sci-fi-95819
+총알 모델, 걷기/쏘기/폭발사운드
+https://assetstore.unity.com/packages/3d/props/weapons/low-poly-fps-pack-free-sample-144839
